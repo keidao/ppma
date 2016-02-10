@@ -1,1 +1,1 @@
-include ':ppma'
+include ':ppma', ':sample'

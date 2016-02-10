@@ -1,4 +1,4 @@
-package com.ppma.view;
+package com.ppma.query;
 
 import android.view.View;
 import android.widget.TextView;

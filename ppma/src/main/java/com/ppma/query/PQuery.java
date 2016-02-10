@@ -1,8 +1,9 @@
-package com.ppma.view;
+package com.ppma.query;
 
 import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.view.View;
+import android.widget.ImageView;
 
 public class PQuery {
 
@@ -31,6 +32,10 @@ public class PQuery {
 
 	public PTextQuery text(int resid) {
 		return new PTextQuery(mContentView.findViewById(resid));
+	}
+
+	public ImageView image(int resid) {
+		return (ImageView) mContentView.findViewById(resid);
 	}
 
 	public PButtonQuery button(int resid) {

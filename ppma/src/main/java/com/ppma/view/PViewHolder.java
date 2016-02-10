@@ -4,6 +4,8 @@ import android.util.SparseArray;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.ppma.query.PTextQuery;
+
 public class PViewHolder {
 	
 	private final static int KEY_VIEW = 0;
