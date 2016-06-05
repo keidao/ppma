@@ -8,6 +8,8 @@ import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Display;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 /**
  * Created by keidao on 1/10/16.
@@ -94,5 +96,28 @@ public class DisplayUtils {
     public static int getApplyDimenssion(Context context, float dpSize) {
 
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpSize, context.getResources().getDisplayMetrics());
+    }
+
+    public static void showStatusBar(Window window) {
+        window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        if (Build.VERSION.SDK_INT < 16) {
+//            window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN, WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
+//        } else {
+//            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
+//            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+//            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
+//        }
+//        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN, WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
+//        window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    }
+
+    public static void hideStatusBar(Window window) {
+        // https://developer.android.com/training/system-ui/status.html?hl=ko#40
+//        if (Build.VERSION.SDK_INT < 16) {
+//            window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        } else {
+//            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
+//        }
+        window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 }
