@@ -57,22 +57,6 @@ public class WidgetUtils {
 		dialogBuilder.create().show();
 	}
 
-	public static void toggle(View view) {
-		if (view.getVisibility() == View.GONE) {
-			view.setVisibility(View.VISIBLE);
-		} else {
-			view.setVisibility(View.GONE);
-		}
-	}
-	
-	public static void toggleSelect(View view) {
-		if (view.isSelected()) {
-			view.setSelected(false);
-		} else {
-			view.setSelected(true);
-		}
-	}
-
 	public static void showKeyboard(View v, boolean flag) {
 		InputMethodManager imm = (InputMethodManager)v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);   
 		if (flag) {
@@ -82,8 +66,8 @@ public class WidgetUtils {
 		}
 	}
 	
-	public static View blankViewOnListViewById(Context context, int dimensionId) {
-    	return blankViewOnListViewByHeight(context, (int) context.getResources().getDimension(dimensionId));
+	public static View blankViewOnListViewById(Context context, int height) {
+    	return blankViewOnListViewByHeight(context, (int) context.getResources().getDimension(height));
 	}
 
 	public static View blankViewOnListViewByHeight(Context context, int heightPixels) {
@@ -93,12 +77,4 @@ public class WidgetUtils {
     			heightPixels));
     	return blankView;
 	}
-	
-	public static View blankView(Context context) {
-    	View blankView = new View(context);
-    	blankView.setLayoutParams(new AbsListView.LayoutParams(
-    			context.getResources().getDisplayMetrics().widthPixels,
-    			AbsListView.LayoutParams.WRAP_CONTENT));
-    	return blankView;
-	}	
 }

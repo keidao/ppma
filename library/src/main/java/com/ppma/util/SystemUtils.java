@@ -1,4 +1,4 @@
-package com.ppma.utils;
+package com.ppma.util;
 
 import android.content.Context;
 import android.media.AudioManager;

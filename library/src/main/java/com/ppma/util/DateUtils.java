@@ -1,4 +1,4 @@
-package com.ppma.utils;
+package com.ppma.util;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;

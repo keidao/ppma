@@ -1,4 +1,4 @@
-package com.ppma.utils;
+package com.ppma.util;
 
 /**
  * Created by keidao on 9/20/15.

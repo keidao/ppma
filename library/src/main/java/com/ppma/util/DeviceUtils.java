@@ -1,12 +1,10 @@
-package com.ppma.utils;
+package com.ppma.util;
 
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.Locale;
 
 import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
@@ -21,31 +19,6 @@ import com.google.android.gms.common.GooglePlayServicesRepairableException;
 
 public class DeviceUtils {
 
-	public static String getCurrentVersion(Context context) {
-		String currentVersion = "";
-		PackageInfo info;
-		try {
-			info = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
-			currentVersion = info.versionName;
-		} catch (PackageManager.NameNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		return currentVersion;
-	}
-
-	public static int getCurrentVersionCode(Context context) {
-		int currentVersionCode = -1;
-		PackageInfo info;
-		try {
-			info = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
-			currentVersionCode = info.versionCode;
-		} catch (PackageManager.NameNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		return currentVersionCode;
-	}
 	public static String getDevcieOs() {
 		return android.os.Build.VERSION.RELEASE;
 	}
