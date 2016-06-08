@@ -1,5 +1,6 @@
 package com.ppma.content;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -9,6 +10,8 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
+
+import java.net.URISyntaxException;
 
 public class IntentUtil {
 	
@@ -26,6 +29,31 @@ public class IntentUtil {
 			fragment.startActivity(i);
 		} else {
 			goPlaystore(fragment, packageName);
+		}
+	}
+
+	public static void launchApp(Context context, String packageName) {
+		Intent i;
+		i = context.getPackageManager().getLaunchIntentForPackage(packageName);
+		if (i != null) {
+			i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			context.startActivity(i);
+		} else {
+			goPlaystore(context, packageName);
+		}
+	}
+
+	public static void launchIntent(Context context, String intentUri) {
+		Intent intent = null;
+		try {
+			intent = Intent.parseUri(intentUri, Intent.URI_INTENT_SCHEME);
+			context.startActivity(intent);
+
+		} catch (ActivityNotFoundException e) {
+			goPlaystore(context, intent.getPackage());
+
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -98,13 +126,19 @@ public class IntentUtil {
     	 */
 		Intent i = new Intent(Intent.ACTION_VIEW);
 		i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		try {
-		    i.setData(Uri.parse("market://details?id=" + packageName));
-		    fragment.startActivityForResult(i, 1001);
-		} catch (android.content.ActivityNotFoundException anfe) {
-		    i.setData(Uri.parse("http://play.google.com/store/apps/details?id=" + packageName));
-		    fragment.startActivityForResult(i, 1001);
-		}
+		i.setData(Uri.parse("market://details?id=" + packageName));
+		fragment.startActivityForResult(i, 1001);
+	}
+
+	public static void goPlaystore(Context context, String packageName) {
+    	/*
+    	 * How to open the google play store directly from my android application
+    	 * http://stackoverflow.com/questions/11753000/how-to-open-the-google-play-store-directly-from-my-android-application
+    	 */
+		Intent i = new Intent(Intent.ACTION_VIEW);
+//		i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		i.setData(Uri.parse("market://details?id=" + packageName));
+		context.startActivity(i);
 	}
 	
 	public static void goWeb(Context context, String url) {
