@@ -10,6 +10,7 @@ import android.view.Display;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 
 /**
  * Created by keidao on 1/10/16.
@@ -119,5 +120,18 @@ public class DisplayUtils {
 //            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
 //        }
         window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    }
+
+    public static void hideSoftKeyboard(Context context) {
+        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        if ( ((Activity) context).getCurrentFocus() != null ) {
+            imm.hideSoftInputFromWindow(((Activity) context).getCurrentFocus().getWindowToken(), 0);
+        }
+    }
+
+    public static void showSoftKeyboard(View view) {
+        InputMethodManager imm = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(view, InputMethodManager.SHOW_FORCED);
     }
 }

@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Created by keidao on 6/8/16.
  */
-public class StringUtils {
+public class UrlUtils {
 
     public static Map<String, String> getQueryMap(String query, String delimeter) {
 
